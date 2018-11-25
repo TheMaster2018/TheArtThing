@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+
+<body>
+  <h1 id="URL"></h1>
+  <video id="player" controls autoplay></video>
+  <button id="capture">Capture</button>
+  <canvas id="canvas" width=320 height=240></canvas>
+
+  <script>
+
+    const canvas = document.getElementById('canvas');
+      const context = canvas.getContext('2d');
+      const captureButton = document.getElementById('capture');
+
+      const constraints = {
+        video: true,
+      };
+
+      captureButton.addEventListener('click', () => {
+        // Draw the video frame to the canvas.
+        context.drawImage(player, 0, 0, canvas.width, canvas.height);
+    	document.getElementById("URL").innerHTML = canvas.toDataURL();
+      });
+
+      // Attach the video stream to the video element and autoplay.
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then((stream) => {
+          player.srcObject = stream;
+        });
+
+  </script>
+
+</body>
+</html>
