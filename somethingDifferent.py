@@ -1,5 +1,5 @@
 # Written by Oliver Gledhill
-# Goes through a s3 bucket and adds it all an aws rekognition image collection
+# Goes through a file containing image file names and adds it all to an aws rekognition image collection
 import os
 
 with open('keys.txt', 'rb') as f:
